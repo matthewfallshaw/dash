@@ -1,0 +1,463 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta http-equiv="Content-Language" content="en"/>
+
+    <!-- Bootstrap CSS required meta tags -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+
+    <a class="dashingAutolink" name="autolink-0"></a><a class="dashAnchor" name="//apple_ref/cpp/Package/Neovim%20Coc%20Keybindings"></a><title>Neovim Coc Keybindings</title>
+  </head>
+  <body>
+    <h1>Neovim Coc Keybindings</h1>
+
+    <a class="dashingAutolink" name="autolink-1"></a><a class="dashAnchor" name="//apple_ref/cpp/Section/Language%20server%20keybindings"></a><h2>Language server keybindings</h2>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-19"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3le"></a><div class="mapping"><code>␣le</code></div>
+          <div class="explanation">Show diagnostic message of current position, no truncate.<br/><code>🥥(coc-diagnostic-info)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-20"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lE"></a><div class="mapping"><code>␣lE</code></div>
+          <div class="explanation">All diagnostics for the workspace.<br/><code>:CocList diagnostics&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-21"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3ln"></a><div class="mapping"><code>␣ln</code></div>
+          <div class="explanation">Jump to next diagnostic position.<br/><code>🥥(coc-diagnostic-next)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-22"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lN"></a><div class="mapping"><code>␣lN</code></div>
+          <div class="explanation">Jump to previous diagnostic position.<br/><code>🥥(coc-diagnostic-prev)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-23"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%5Dc"></a><div class="mapping"><code>]c</code></div>
+          <div class="explanation">Jump to next diagnostic position.<br/><code>🥥(coc-diagnostic-next)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-24"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%5Bc"></a><div class="mapping"><code>[c</code></div>
+          <div class="explanation">Jump to previous diagnostic position.<br/><code>🥥(coc-diagnostic-prev)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-25"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3ld"></a><div class="mapping"><code>␣ld</code></div>
+          <div class="explanation">Jump to definition(s) of current symbol.<br/><code>🥥(coc-definition)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-26"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/gd"></a><div class="mapping"><code>gd</code></div>
+          <div class="explanation">Jump to definition position of the current symbol.<br/>
+            <code>:call CocAction(&#39;jumpDefinition&#39;, &#39;edit&#39;)&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-27"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lh"></a><div class="mapping"><code>␣lh</code></div>
+          <div class="explanation">Show documentation of the current word in a preview window.<br/><code>:call CocAction(&#39;doHover&#39;)&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-28"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3K"></a><div class="mapping"><code>␣K</code></div>
+          <div class="explanation">Show documentation of the current word in a preview window.<br/><code>:call CocAction(&#39;doHover&#39;)&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-29"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3li"></a><div class="mapping"><code>␣li</code></div>
+          <div class="explanation">Jump to implementation(s) of current symbol.<br/><code>🥥(coc-implementation)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-30"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/gi"></a><div class="mapping"><code>gi</code></div>
+          <div class="explanation">Jump to implementation(s) of current symbol.<br/><code>:call CocAction(&#39;jumpImplementation&#39;, &#39;edit&#39;)&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-31"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lt"></a><div class="mapping"><code>␣lt</code></div>
+          <div class="explanation">Jump to type definition(s) of current symbol.<br/><code>🥥(coc-type-definition)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-32"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/gy"></a><div class="mapping"><code>gy</code></div>
+          <div class="explanation">Jump to type definition(s) of current symbol.<br/><code>:call CocAction(&#39;jumpTypeDefinition&#39;, &#39;edit&#39;)&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-33"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lR"></a><div class="mapping"><code>␣lR</code></div>
+          <div class="explanation">Jump to references of current symbol.<br/><code>🥥(coc-references)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-34"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lr"></a><div class="mapping"><code>␣lr</code></div>
+          <div class="explanation">Rename symbol under cursor to a new word.<br/><code>🥥(coc-rename)</code></div>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-35"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lf"></a><div class="mapping"><code>␣lf</code></div>
+          <div class="explanation">Format the whole buffer.<br/><code>🥥(coc-format)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-36"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lF"></a><div class="mapping"><code>␣lF</code></div>
+          <div class="explanation">Format selected range.<br/><code>🥥(coc-format-selected)</code></div>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-37"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3la"></a><div class="mapping"><code>␣la</code></div>
+          <div class="explanation">Get and run code action(s) for current line.<br/><code>🥥(coc-codeaction)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-38"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lc"></a><div class="mapping"><code>␣lc</code></div>
+          <div class="explanation">Do command from codeLens of current line.<br/><code>🥥(coc-codelens-action)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-39"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lq"></a><div class="mapping"><code>␣lq</code></div>
+          <div class="explanation">Try to run quickfix action for diagnostics on the current line.<br/><code>🥥(coc-fix-current)</code></div>
+        </div>
+      </div>
+    </div>
+
+
+    <a class="dashingAutolink" name="autolink-2"></a><a class="dashAnchor" name="//apple_ref/cpp/Section/List%20keybindings"></a><h2>List keybindings</h2>
+    <a class="dashingAutolink" name="autolink-4"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/Coc.nvim"></a><h3>Coc.nvim</h3>
+    <div class="mapping-group">
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-40"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3lA"></a><div class="mapping"><code>␣lA</code></div>
+          <div class="explanation">Get available code actions.<br/><code>:CocList actions&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-41"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3ls"></a><div class="mapping"><code>␣ls</code></div>
+          <div class="explanation">Search workspace symbols.<br/><code>:CocList symbols&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-42"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3scc"></a><div class="mapping"><code>␣scc</code></div>
+          <div class="explanation">Search workspace commands.<br/><code>:CocList commands&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-43"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sce"></a><div class="mapping"><code>␣sce</code></div>
+          <div class="explanation">Manage coc extensions.<br/><code>:CocList extensions&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-44"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3scl"></a><div class="mapping"><code>␣scl</code></div>
+          <div class="explanation">Get available lists.<br/><code>:CocList lists&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-45"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3scs"></a><div class="mapping"><code>␣scs</code></div>
+          <div class="explanation">Available completion sources.<br/><code>:CocList sources&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-5"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/buffers"></a><h3>buffers</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-46"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sb"></a><div class="mapping"><code>␣sb</code></div>
+          <div class="explanation"><br/><code>:CocList buffers&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-6"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/files"></a><h3>files</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-47"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sf"></a><div class="mapping"><code>␣sf</code></div>
+          <div class="explanation"><br/><code>:CocList files&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-48"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sp"></a><div class="mapping"><code>␣sp</code></div>
+          <div class="explanation"><br/><code>:CocList files -F&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-7"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/filetypes"></a><h3>filetypes</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-49"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3st"></a><div class="mapping"><code>␣st</code></div>
+          <div class="explanation"><br/><code>:CocList filetypes&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-8"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/git"></a><h3>git</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-50"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sgb"></a><div class="mapping"><code>␣sgb</code></div>
+          <div class="explanation"><br/><code>:CocList branches&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-51"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sgc"></a><div class="mapping"><code>␣sgc</code></div>
+          <div class="explanation"><br/><code>:CocList commits&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-52"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sgi"></a><div class="mapping"><code>␣sgi</code></div>
+          <div class="explanation"><br/><code>:CocList issues&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-53"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sgs"></a><div class="mapping"><code>␣sgs</code></div>
+          <div class="explanation"><br/><code>:CocList gstatus&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-9"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/grep"></a><h3>grep</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-54"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sg"></a><div class="mapping"><code>␣sg</code></div>
+          <div class="explanation"><br/><code>:CocList --interactive grep -F&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-55"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sw"></a><div class="mapping"><code>␣sw</code></div>
+          <div class="explanation"><br/><code>:execute &#34;CocList --interactive --input=&#34;.expand(&#34;&lt;cword&gt;&#34;).&#34; grep -F&#34;&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-10"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/help%20tags"></a><h3>help tags</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-56"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3s%3F"></a><div class="mapping"><code>␣s?</code></div>
+          <div class="explanation"><br/><code>:CocList helptags&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-11"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/lines%20of%20buffer"></a><h3>lines of buffer</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-57"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sl"></a><div class="mapping"><code>␣sl</code></div>
+          <div class="explanation"><br/><code>:CocList lines&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-58"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3s%2A"></a><div class="mapping"><code>␣s*</code></div>
+          <div class="explanation"><br/><code>:execute &#34;CocList --interactive --input=&#34;.expand(&#34;&lt;cword&gt;&#34;).&#34; lines&#34;&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-12"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/maps"></a><h3>maps</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-59"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sm"></a><div class="mapping"><code>␣sm</code></div>
+          <div class="explanation"><br/><code>:CocList maps&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-13"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/search%20history"></a><h3>search history</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-60"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3ss"></a><div class="mapping"><code>␣ss</code></div>
+          <div class="explanation"><br/><code>:CocList searchhistory&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-14"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/Vim%20commands"></a><h3>Vim commands</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-61"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sx"></a><div class="mapping"><code>␣sx</code></div>
+          <div class="explanation"><br/><code>:CocList vimcommands&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-15"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/Vim%20commands%20history"></a><h3>Vim commands history</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-62"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sh"></a><div class="mapping"><code>␣sh</code></div>
+          <div class="explanation"><br/><code>:CocList cmdhistory&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-16"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/yank%20history"></a><h3>yank history</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-63"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sy"></a><div class="mapping"><code>␣sy</code></div>
+          <div class="explanation"><br/><code>:CocList --normal yank&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="dashingAutolink" name="autolink-17"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/resume%20previous%20search"></a><h3>resume previous search</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-64"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3sr"></a><div class="mapping"><code>␣sr</code></div>
+          <div class="explanation"><br/><code>:CocListResume&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <a class="dashingAutolink" name="autolink-3"></a><a class="dashAnchor" name="//apple_ref/cpp/Section/Other%20keybindings"></a><h2>Other keybindings</h2>
+
+    <a class="dashingAutolink" name="autolink-18"></a><a class="dashAnchor" name="//apple_ref/cpp/Entry/Git%20related"></a><h3>Git related</h3>
+    <div class="mapping-group">
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-65"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3gw"></a><div class="mapping"><code>␣gw</code></div>
+          <div class="explanation"><br/><code>:CocCommand git.browserOpen&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-66"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3gcd"></a><div class="mapping"><code>␣gcd</code></div>
+          <div class="explanation"><br/><code>🥥(coc-git-chunkinfo)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-67"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3gcj"></a><div class="mapping"><code>␣gcj</code></div>
+          <div class="explanation"><br/><code>🥥(coc-git-nextchunk)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-68"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3gck"></a><div class="mapping"><code>␣gck</code></div>
+          <div class="explanation"><br/><code>🥥(coc-git-prevchunk)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-69"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%5Dg"></a><div class="mapping"><code>]g</code></div>
+          <div class="explanation"><br/><code>🥥(coc-git-nextchunk)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-70"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%5Bg"></a><div class="mapping"><code>[g</code></div>
+          <div class="explanation"><br/><code>🥥(coc-git-prevchunk)</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-71"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3gcs"></a><div class="mapping"><code>␣gcs</code></div>
+          <div class="explanation"><br/><code>:CocCommand git.chunkStage&lt;CR&gt;</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="definition">
+          <a class="dashingAutolink" name="autolink-72"></a><a class="dashAnchor" name="//apple_ref/cpp/Binding/%E2%90%A3gcu"></a><div class="mapping"><code>␣gcu</code></div>
+          <div class="explanation"><br/><code>:CocCommand git.chunkUndo&lt;CR&gt;</code></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+
+</body></html>

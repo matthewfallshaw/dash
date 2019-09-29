@@ -1,0 +1,17 @@
+{
+  "name": "Neovim Coc Keybindings",
+  "package": "vim-coc",
+  "index": "index.html",
+  "selectors": {
+    "title": "Package",
+    "h2": "Section",
+    "h3": "Entry",
+    "div.mapping": "Binding"
+  },
+  "ignore": [
+    "ABOUT"
+    ],
+    "icon32x32": "CoC.png",
+    "allowJS": false,
+    "ExternalURL": ""
+}

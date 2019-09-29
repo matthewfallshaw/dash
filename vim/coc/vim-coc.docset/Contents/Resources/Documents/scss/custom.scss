@@ -1,0 +1,43 @@
+@import "../bootstrap/scss/bootstrap";
+
+body {
+  @extend .container-fluid;
+}
+
+div.mapping-group {
+  @include make-row();
+  // @extend .d-flex;
+  // @extend .flex-row;
+  @extend .p-2;
+}
+div.card {
+  @include make-col-ready();
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+  @include media-breakpoint-up(md) {
+    @include make-col(4);
+  }
+  // @include media-breakpoint-up(lg) {
+  //   @include make-col(3);
+  // }
+  @extend .bg-light;
+}
+div.definition {
+  @include make-row();
+}
+div.mapping {
+  @include make-col-ready();
+  @include make-col(2);
+  // @extend .d-flex;
+  // @extend .align-self-stretch;
+}
+div.explanation {
+  @include make-col-ready();
+  @include make-col(10);
+  // @extend .d-flex;
+  // @extend .align-self-stretch;
+}
+div.explanation code {
+  font-size: small;
+}
