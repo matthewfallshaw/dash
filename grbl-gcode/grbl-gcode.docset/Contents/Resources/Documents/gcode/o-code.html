@@ -1,0 +1,579 @@
+<!--?xml version="1.0" encoding="UTF-8"?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
+<meta name="generator" content="AsciiDoc 8.6.10"/>
+<a class="dashingAutolink" name="autolink-111"></a><a class="dashAnchor" name="//apple_ref/cpp/Package/O%20Codes"></a><title>O Codes</title>
+<link rel="stylesheet" href="https://linuxcnc.org/docs/devel/html//asciidoc.css" type="text/css"/>
+
+
+<link rel="stylesheet" href="https://linuxcnc.org/docs/devel/html//linuxcnc.css" type="text/css"/>
+<script type="text/javascript" src="https://linuxcnc.org/docs/devel/html//asciidoc.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="book">
+<div id="header">
+<h1>O Codes</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-100"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/1.%20Use%20of%20O-codes"></a><h2 id="cha:o-codes">1. Use of O-codes</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>O-codes provide for flow control in NC programs. Each block has an
+associated number, which is the number used after O. Care must be taken
+to properly match the O-numbers. O codes use the letter <em>O</em> not the
+number zero as the first character in the number like O100 or o100.</p></div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-101"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/2.%20Numbering"></a><h2 id="_numbering">2. Numbering</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Numbered O codes must have a unique number for each subroutine,</p></div>
+<div class="listingblock">
+<div class="title">Numbering Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">(the start of o100)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o100 sub</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">(notice that the if-endif block uses a different number)</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(the start of o110)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">  o110 if</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#2</span> <span style="font-weight: bold"><span style="color: #000000">GT</span></span> <span style="color: #993399">5</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+    <span style="font-style: italic"><span style="color: #9A1900">(some code here)</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(the end of o110)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">  o110 endif</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(some more code here)</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">(the end of o100)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o100 endsub</span></span></tt></pre></div></div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-102"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/3.%20Comments"></a><h2 id="ocode:comments">3. Comments</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Comments on the same line as the O word should not be used as the behavior can
+change in the future.</p></div>
+<div class="paragraph"><p>The behavior is undefined if:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The same number is used for more than one block.
+</p>
+</li>
+<li>
+<p>
+Other words are used on a line with an O- word.
+</p>
+</li>
+<li>
+<p>
+Comments are used on a line with an O-word.
+</p>
+</li>
+</ul></div>
+<div class="admonitionblock">
+<table><tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Using the lower case <em>o</em> makes it easier to distinguish from a 0
+that might have been mistyped. For example <em>o100</em> is easier to
+see than <em>O100</em> that it is not a <em>0</em>.</td>
+</tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-103"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/4.%20Subroutines"></a><h2 id="ocode:subroutines">4. Subroutines</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Subroutines starts at <em>Onnn sub</em> and ends at <em>Onnn endsub</em>. The lines between
+<em>Onnn sub</em> and <em>Onnn endsub</em> are not executed until the subroutine is called
+with <em>Onnn call</em>. Each subroutine must use a unique number.</p></div>
+<div class="listingblock">
+<div class="title">Subroutine Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">o100 sub</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">G53</span></span> <span style="font-weight: bold"><span style="color: #0000FF">G0</span></span> <span style="color: #FF6600">X</span><span style="color: #993399">0</span> <span style="color: #FF6600">Y</span><span style="color: #993399">0</span> <span style="color: #FF6600">Z</span><span style="color: #993399">0</span> <span style="font-style: italic"><span style="color: #9A1900">(rapid move to machine home)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o100 endsub</span></span>
+
+<span style="font-style: italic"><span style="color: #9A1900">(the subroutine is called)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o100 call</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M2</span></span></tt></pre></div></div>
+<div class="paragraph"><p>See <a href="g-code.html#gcode:g53">G53</a>, <a href="g-code.html#gcode:g0">G0</a> and <a href="m-code.html#mcode:m2-m30">M2</a> sections for more information.</p></div>
+<div class="paragraph"><div class="title">O- Return</div><p>Inside a subroutine, <em>O- return</em> can be executed. This immediately
+returns to the calling code, just as though <em>O- endsub</em> was encountered.</p></div>
+<div class="listingblock">
+<div class="title">O- Return Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">o100 sub</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(test if parameter #2 is greater than 5)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">  o110 if</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#2</span> <span style="font-weight: bold"><span style="color: #000000">GT</span></span> <span style="color: #993399">5</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+    <span style="font-style: italic"><span style="color: #9A1900">(return to top of subroutine if test is true)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">    o100 return</span></span>
+<span style="font-weight: bold"><span style="color: #000080">  o110 endif</span></span>
+    <span style="font-style: italic"><span style="color: #9A1900">(this only gets executed if parameter #2 is not greater than 5)</span></span>
+    <span style="font-style: italic"><span style="color: #9A1900">(DEBUG, parameter 1 is [</span></span><span style="color: #009900">#1</span><span style="font-style: italic"><span style="color: #9A1900">])</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o100 endsub</span></span></tt></pre></div></div>
+<div class="paragraph"><p>See the <a href="overview.html#gcode:binary-operators">Binary Operators</a> and <a href="overview.html#sec:overview-parameters">Parameters</a> sections for more information.</p></div>
+<div class="paragraph"><div class="title">O- Call</div><p><em>O- Call</em> takes up to 30 optional arguments, which are passed to the subroutine
+as <em>#1</em>, <em>#2</em> , &hellip;, #N. Parameters from #N+1 to #30 have the same
+value as in the calling context.
+On return from the subroutine, the values of
+parameters #1 through #30 (regardless of the number of arguments) will
+be restored to the values they had before the call. Parameters #1 - #30
+are local to the subroutine.</p></div>
+<div class="paragraph"><p>Because <em>1 2 3</em> is parsed as the number 123, the parameters must be
+enclosed in square brackets. The following calls a subroutine with 3 arguments:</p></div>
+<div class="listingblock">
+<div class="title">O- Call Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">o100 sub</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(test if parameter #2 is greater than 5)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">  o110 if</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#2</span> <span style="font-weight: bold"><span style="color: #000000">GT</span></span> <span style="color: #993399">5</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+    <span style="font-style: italic"><span style="color: #9A1900">(return to top of subroutine if test is true)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">    o100 return</span></span>
+<span style="font-weight: bold"><span style="color: #000080">  o110 endif</span></span>
+    <span style="font-style: italic"><span style="color: #9A1900">(this only gets executed if parameter #2 is not greater than 5)</span></span>
+    <span style="font-style: italic"><span style="color: #9A1900">(DEBUG, parameter 1 is [</span></span><span style="color: #009900">#1</span><span style="font-style: italic"><span style="color: #9A1900">])</span></span>
+    <span style="font-style: italic"><span style="color: #9A1900">(DEBUG, parameter 3 is [</span></span><span style="color: #009900">#3</span><span style="font-style: italic"><span style="color: #9A1900">])</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o100 endsub</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">o100 call</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #993399">100</span><span style="font-weight: bold"><span style="color: #000000">]</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #993399">2</span><span style="font-weight: bold"><span style="color: #000000">]</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #993399">325</span><span style="font-weight: bold"><span style="color: #000000">]</span></span></tt></pre></div></div>
+<div class="paragraph"><p>Subroutine bodies may not be nested. They may only be called after
+they are defined. They may be called from other functions, and may call
+themselves recursively if it makes sense to do so. The maximum
+subroutine nesting level is 10.</p></div>
+<div class="paragraph"><p>Subroutines can change the value of parameters above #30 and those changes will
+be visible to the calling code. Subroutines may also change the value of global
+named parameters.</p></div>
+<div class="sect2">
+<h3 id="ocode:fanuc-style-programs">4.1. Fanuc-Style Numbered Programs</h3>
+<div class="paragraph"><p>Numbered programs (both main and subprograms), the <em>M98</em> call and
+<em>M99</em> return M-codes, and their respective semantic differences are an
+alternative to the rs274ngc subroutines described above, provided for
+compatibility with Fanuc and other machine controllers.</p></div>
+<div class="paragraph"><p>Numbered programs are enabled by default, and may be disabled by
+placing <code>DISABLE_FANUC_STYLE_SUB = 1</code> in the <code>[RS274NGC]</code> section of the <code>.ini</code> file.</p></div>
+<div class="admonitionblock">
+<table><tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Numbered main and subprogram definitions and calls differ from
+traditional rs274ngc both in syntax and execution.  To reduce the
+possibility of confusion, the interpreter will raise an error if
+definitions of one style are mixed with calls of another.</td>
+</tr></tbody></table>
+</div>
+<div class="listingblock">
+<div class="title">Numbered Subprogram Simple Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">o1 </span></span><span style="font-style: italic"><span style="color: #9A1900">(Example 1)</span></span>    <span style="font-style: italic"><span style="color: #9A1900">; Main program 1, &#34;Example 1&#34;</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M98</span></span> <span style="color: #FF6600">P</span><span style="color: #993399">100</span>          <span style="font-style: italic"><span style="color: #9A1900">; Call subprogram 100</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M30</span></span>               <span style="font-style: italic"><span style="color: #9A1900">; End main program</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">o100              </span></span><span style="font-style: italic"><span style="color: #9A1900">; Beginning of subprogram 100</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">G53</span></span> <span style="font-weight: bold"><span style="color: #0000FF">G0</span></span> <span style="color: #FF6600">X</span><span style="color: #993399">0</span> <span style="color: #FF6600">Y</span><span style="color: #993399">0</span> <span style="color: #FF6600">Z</span><span style="color: #993399">0</span> <span style="font-style: italic"><span style="color: #9A1900">; Rapid move to machine home</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M99</span></span>               <span style="font-style: italic"><span style="color: #9A1900">; Return from subprogram 100</span></span></tt></pre></div></div>
+<div class="paragraph"><div class="title"><em>o1 (Title)</em></div><p>The optional main program beginning block gives the main program the
+number <code>1</code>.  Some controllers treat an optional following
+parenthesized comment as a program title, <code>Example 1</code> in this example,
+but this has no special meaning in the rs274ngc interpreter.</p></div>
+<div class="paragraph"><div class="title"><em>M98 P- &lt;L-&gt;</em></div><p>Call a numbered subprogram.  The block <code>M98 P100</code> is analogous to the
+traditional <code>o100 call</code> syntax, but may only be used to call a
+following numbered subprogram defined with <code>o100</code>&hellip;<code>M99</code>.  An
+optional <em>L</em>-word specifies a loop count.</p></div>
+<div class="paragraph"><div class="title"><em>M30</em></div><p>The main program must be terminated with <code>M02</code> or <code>M30</code> (or <code>M99</code>; see
+below).</p></div>
+<div class="paragraph"><div class="title"><em>O-</em> subprogram definition start</div><p>Marks the start of a numbered subprogram definition.  The block <code>O100</code>
+is similar to <code>o100 sub</code>, except that it must be placed later in the
+file than the <code>M98 P100</code> calling block.</p></div>
+<div class="paragraph"><div class="title"><em>M99</em> return from numbered subroutine</div><p>The block <code>M99</code> is analogous to the traditional <code>o100 endsub</code> syntax,
+but may only terminate a numbered program (<code>o100</code> in this example),
+and may not terminate a subroutine beginning with the <code>o100 sub</code>
+syntax.</p></div>
+<div class="paragraph"><p>The <code>M98</code> subprogram call differs from rs274ngc <code>O call</code> in the
+following ways:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The numbered subprogram must follow the <code>M98</code> call in the program file.
+  The interpreter will throw an error if the subprogram precedes the call block.
+</p>
+</li>
+<li>
+<p>
+Parameters <code>#1</code>, <code>#2</code>, &hellip;, <code>#30</code> are global and accessible in
+  numbered subprograms, similar to higher-numbered parameters in
+  traditional style calls.  Modifications to these parameters within
+  a subprogram are global modifications, and will be persist after
+  subprogram return.
+</p>
+</li>
+<li>
+<p>
+<code>M98</code> subprogram calls have no return value.
+</p>
+</li>
+<li>
+<p>
+<code>M98</code> subprogram call blocks may contain an optional L-word specifying a loop repeat count.
+  Without the L-word, the subprogram will execute once only (equivalent to <code>M98 L1</code>).
+  An <code>M98 L0</code> block will not execute the subprogram.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>In rare cases, the <code>M99</code> M-code may be used to terminate the main
+program, where it indicates an <em>endless program</em>.  When the
+interpreter reaches an <code>M99</code> in the main program, it will skip back to
+the beginning of the file and resume execution at the first line.  An
+example use of an endless program is in a machine warm-up cycle; a
+block delete program end <code>/M30</code> block might be used to stop the cycle
+at a tidy point when the operator is ready.</p></div>
+<div class="listingblock">
+<div class="title">Numbered Subprogram Full Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">O1                             </span></span><span style="font-style: italic"><span style="color: #9A1900">; Main program 1</span></span>
+  <span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">=</span></span> <span style="color: #993399">0</span>
+  <span style="font-style: italic"><span style="color: #9A1900">(PRINT,X MAIN BEGIN:  1=#1)</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">M98</span></span> <span style="color: #FF6600">P</span><span style="color: #993399">100</span> <span style="color: #FF6600">L</span><span style="color: #993399">5</span>                  <span style="font-style: italic"><span style="color: #9A1900">; Call subprogram 100</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(PRINT,X MAIN END:  1=#1)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M30</span></span>                            <span style="font-style: italic"><span style="color: #9A1900">; End main program</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">O100                           </span></span><span style="font-style: italic"><span style="color: #9A1900">; Subprogram 100</span></span>
+  <span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">=</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">+</span></span> <span style="color: #993399">1</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">M98</span></span> <span style="color: #FF6600">P</span><span style="color: #993399">200</span> <span style="color: #FF6600">L</span><span style="color: #993399">5</span>                  <span style="font-style: italic"><span style="color: #9A1900">; Call subprogram 200</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(PRINT,&gt;&gt; O100:  #1)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M99</span></span>                            <span style="font-style: italic"><span style="color: #9A1900">; Return from Subprogram 100</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">O200                           </span></span><span style="font-style: italic"><span style="color: #9A1900">; Subprogram 200</span></span>
+  <span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">=</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">+</span></span> <span style="color: #993399">0.01</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(PRINT,&gt;&gt;&gt;&gt; O200:  #1)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M99</span></span>                            <span style="font-style: italic"><span style="color: #9A1900">; Return from Subprogram 200</span></span></tt></pre></div></div>
+<div class="paragraph"><p>In this example, parameter <code>#1</code> is initialized to <code>0</code>.  Subprogram
+<code>O100</code> is called five times in a loop.  Nested within each call to
+<code>O100</code>, subprogram <code>O200</code> is called five times in a loop, for 25 times
+total.</p></div>
+<div class="paragraph"><p>Note that parameter <code>#1</code> is global.  At the end of the main program,
+after updates within <code>O100</code> and <code>O200</code>, its value will equal <code>5.25</code>.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-104"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/5.%20Looping"></a><h2 id="ocode:looping">5. Looping</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The <em>while loop</em> has two structures: <em>while/endwhile</em>, and <em>do/while</em>. In
+each case, the loop is exited when the <em>while</em> condition evaluates to
+false. The difference is when the test condition is done. The <em>do/while</em>
+loop runs the code in the loop then checks the test condition. The
+<em>while/endwhile</em> loop does the test first.</p></div>
+<div class="listingblock">
+<div class="title">While Endwhile Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">(draw a sawtooth shape)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">G0</span></span> <span style="color: #FF6600">X</span><span style="color: #993399">1</span> <span style="color: #FF6600">Y</span><span style="color: #993399">0</span> <span style="font-style: italic"><span style="color: #9A1900">(move to start position)</span></span>
+<span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">=</span></span> <span style="color: #993399">0</span> <span style="font-style: italic"><span style="color: #9A1900">(assign parameter #1 the value of 0)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">F25 </span></span><span style="font-style: italic"><span style="color: #9A1900">(set a feed rate)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o101 while</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">LT</span></span> <span style="color: #993399">10</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">G1</span></span> <span style="color: #FF6600">X</span><span style="color: #993399">0</span>
+  <span style="font-weight: bold"><span style="color: #0000FF">G1</span></span> <span style="color: #FF6600">Y</span><span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#1</span><span style="font-weight: bold"><span style="color: #000000">/</span></span><span style="color: #993399">10</span><span style="font-weight: bold"><span style="color: #000000">]</span></span> <span style="color: #FF6600">X</span><span style="color: #993399">1</span>
+  <span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">=</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#1</span><span style="font-weight: bold"><span style="color: #000000">+</span></span><span style="color: #993399">1</span><span style="font-weight: bold"><span style="color: #000000">]</span></span> <span style="font-style: italic"><span style="color: #9A1900">(increment the test counter)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o101 endwhile</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M2</span></span> <span style="font-style: italic"><span style="color: #9A1900">(end program)</span></span></tt></pre></div></div>
+<div class="listingblock">
+<div class="title">Do While Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">=</span></span> <span style="color: #993399">0</span> <span style="font-style: italic"><span style="color: #9A1900">(assign parameter #1 the value of 0)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o100 do</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(debug, parameter 1 = </span></span><span style="color: #009900">#1</span><span style="font-style: italic"><span style="color: #9A1900">)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">  o110 if</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">EQ</span></span> <span style="color: #993399">2</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+    <span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">=</span></span> <span style="color: #993399">3</span> <span style="font-style: italic"><span style="color: #9A1900">(assign the value of 3 to parameter #1)</span></span>
+    <span style="font-style: italic"><span style="color: #9A1900">(msg, #1 has been assigned the value of 3)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">    o100 continue</span></span> <span style="font-style: italic"><span style="color: #9A1900">(skip to start of loop)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">  o110 endif</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(some code here)</span></span>
+  <span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">=</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">+</span></span> <span style="color: #993399">1</span><span style="font-weight: bold"><span style="color: #000000">]</span></span> <span style="font-style: italic"><span style="color: #9A1900">(increment the test counter)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o100 while</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#1</span> <span style="font-weight: bold"><span style="color: #000000">LT</span></span> <span style="color: #993399">3</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">(msg, Loop Done!)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M2</span></span></tt></pre></div></div>
+<div class="paragraph"><p>Inside a while loop, <em>O- break</em> immediately exits the loop, and <em>O-
+continue</em> immediately skips to the next evaluation of the <em>while</em>
+condition. If it is still true, the loop begins again at the top. If
+it is false, it exits the loop.</p></div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-105"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/6.%20Conditional"></a><h2 id="ocode:conditional">6. Conditional</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The <em>if</em> conditional consists of a group of statements with the same <em>o</em> number
+that start with <em>if</em> and end with <em>endif</em>. Optional <em>elseif</em> and <em>else</em> conditions
+may be between the starting <em>if</em> and the ending <em>endif</em>.</p></div>
+<div class="paragraph"><p>If the <em>if</em> conditional evaluates to true then the group of statements
+following the <em>if</em> up to the next conditional line are executed.</p></div>
+<div class="paragraph"><p>If the <em>if</em> conditional evaluates to false then the <em>elseif</em> conditions are
+evaluated in order until one evaluates to true. If the <em>elseif</em> condition is
+true then the statements following the <em>elseif</em> up to the next conditional
+line are executed. If none of the <em>if</em> or <em>elseif</em> conditions evaluate to true
+then the statements following the <em>else</em> are executed. When a condition is
+evaluated to true no more conditions are evaluated in the group.</p></div>
+<div class="listingblock">
+<div class="title">If Endif Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">(if parameter #31 is equal to 3 set S2000)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o101 if</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#31</span> <span style="font-weight: bold"><span style="color: #000000">EQ</span></span> <span style="color: #993399">3</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">S2000</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o101 endif</span></span></tt></pre></div></div>
+<div class="listingblock">
+<div class="title">If ElseIf Else EndIf Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">(if parameter #2 is greater than 5 set F100)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o102 if</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#2</span> <span style="font-weight: bold"><span style="color: #000000">GT</span></span> <span style="color: #993399">5</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">F100</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o102 elseif</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#2</span> <span style="font-weight: bold"><span style="color: #000000">LT</span></span> <span style="color: #993399">2</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">(else if parameter #2 is less than 2 set F200)</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">F200</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">(else if parameter #2 is 2 through 5 set F150)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o102 else</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">F150</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o102 endif</span></span></tt></pre></div></div>
+<div class="paragraph"><p>Several conditions may be tested for by <em>elseif</em> statements until the
+<em>else</em> path is finally executed if all preceding conditions are false:</p></div>
+<div class="listingblock">
+<div class="title">If Elseif Else Endif Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">(if parameter #2 is greater than 5 set F100)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">O102 if</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#2</span> <span style="font-weight: bold"><span style="color: #000000">GT</span></span> <span style="color: #993399">5</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">F100</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">(else if parameter #2 less than 2 set F200)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">O102 elseif</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#2</span> <span style="font-weight: bold"><span style="color: #000000">LT</span></span> <span style="color: #993399">2</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">F20</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">(parameter #2 is between 2 and 5)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">O102 else</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">F200</span></span>
+<span style="font-weight: bold"><span style="color: #000080">O102 endif</span></span></tt></pre></div></div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-106"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/7.%20Repeat"></a><h2 id="ocode:repeat">7. Repeat</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The <em>repeat</em> will execute the statements inside of the
+repeat/endrepeat the specified number of times. The example shows how
+you might mill a diagonal series of shapes starting at the present
+position.</p></div>
+<div class="listingblock">
+<div class="title">Example with <em>repeat</em></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">(Mill 5 diagonal shapes)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">G91</span></span> <span style="font-style: italic"><span style="color: #9A1900">(Incremental mode)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o103 repeat</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #993399">5</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+... <span style="font-style: italic"><span style="color: #9A1900">(insert milling code here)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">G0</span></span> <span style="color: #FF6600">X</span><span style="color: #993399">1</span> <span style="color: #FF6600">Y</span><span style="color: #993399">1</span> <span style="font-style: italic"><span style="color: #9A1900">(diagonal move to next position)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o103 endrepeat</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">G90</span></span> <span style="font-style: italic"><span style="color: #9A1900">(Absolute mode)</span></span></tt></pre></div></div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-107"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/8.%20Indirection"></a><h2 id="ocode:indirection">8. Indirection</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The O-number may be given by a parameter and/or calculation.</p></div>
+<div class="listingblock">
+<div class="title">Indirection Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>o<span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#10</span><span style="color: #993399">1</span><span style="font-weight: bold"><span style="color: #000000">+</span></span><span style="color: #993399">2</span><span style="font-weight: bold"><span style="color: #000000">]</span></span> <span style="font-weight: bold"><span style="color: #000080">call</span></span></tt></pre></div></div>
+<div class="paragraph"><div class="title">Computing values in O-words</div><p>For more information on computing values see the following sections:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="overview.html#sec:overview-parameters">Parameters</a>
+</p>
+</li>
+<li>
+<p>
+<a href="overview.html#gcode:expressions">Expressions</a>
+</p>
+</li>
+<li>
+<p>
+<a href="overview.html#gcode:binary-operators">Binary Operators</a>
+</p>
+</li>
+<li>
+<p>
+<a href="overview.html#gcode:functions">Functions</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-108"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/9.%20Calling%20Files"></a><h2 id="ocode:calling-files">9. Calling Files</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>To call a separate file with a subroutine name the file the same as
+your call and include a sub and endsub in the file. The file must be in the
+directory pointed to by <em>PROGRAM_PREFIX</em> or <em>SUBROUTINE_PATH</em> in the INI file.
+The file name can include <strong>lowercase</strong> letters, numbers, dash, and underscore
+only. A named subroutine file can contain only a single subroutine definition.</p></div>
+<div class="listingblock">
+<div class="title">Named File Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">o&lt;myfile&gt; call</span></span></tt></pre></div></div>
+<div class="listingblock">
+<div class="title">Numbered File Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">o123 call</span></span></tt></pre></div></div>
+<div class="paragraph"><p>In the called file you must include the oxxx sub and endsub and the
+file must be a valid file.</p></div>
+<div class="listingblock">
+<div class="title">Called File Example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">(filename myfile.ngc)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o&lt;myfile&gt; sub</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">(code here)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">o&lt;myfile&gt; endsub</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">M2</span></span></tt></pre></div></div>
+<div class="admonitionblock">
+<table><tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">The file names are lowercase letters only so <em>o&lt;MyFile&gt;</em> is converted to <em>o&lt;myfile&gt;</em>
+by the interpreter. More information about the search path and options for the
+search path are in the INI configuration section.</td>
+</tr></tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-109"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/10.%20Subroutine%20return%20values"></a><h2 id="_subroutine_return_values">10. Subroutine return values</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Subroutines may optionally return a value by an optional expression at
+an <em>endsub</em> or <em>return</em> statement.</p></div>
+<div class="listingblock">
+<div class="title">Return value example</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">o123 return</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #009900">#2</span> <span style="font-weight: bold"><span style="color: #000000">*</span></span><span style="color: #993399">5</span><span style="font-weight: bold"><span style="color: #000000">]</span></span>
+...
+<span style="font-weight: bold"><span style="color: #000080">o123 endsub</span></span> <span style="font-weight: bold"><span style="color: #000000">[</span></span><span style="color: #993399">3</span> <span style="font-weight: bold"><span style="color: #000000">*</span></span> <span style="color: #993399">4</span><span style="font-weight: bold"><span style="color: #000000">]</span></span></tt></pre></div></div>
+<div class="paragraph"><p>A subroutine return value is stored in the <em>&lt;_value&gt;</em>
+<a href="overview.html#gcode:predefined-named-parameters">predefined named parameter</a> , and
+the <em>&lt;_value_returned&gt;</em> predefined parameter is set to 1, to indicate
+a value was returned. Both parameters are global, and are cleared just
+before the next subroutine call.</p></div>
+</div>
+</div>
+<div class="sect1">
+<a class="dashingAutolink" name="autolink-110"></a><a class="dashAnchor" name="//apple_ref/cpp/Command/11.%20Errors"></a><h2 id="ocode:errors">11. Errors</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The following statements  cause an error message and  abort the
+interpreter:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+a <code>return</code> or <code>endsub</code> not within a sub definition
+</p>
+</li>
+<li>
+<p>
+a label on <code>repeat</code> which is defined elsewhere
+</p>
+</li>
+<li>
+<p>
+a label on <code>while</code> which is defińed elsewhere and not referring to a <code>do</code>
+</p>
+</li>
+<li>
+<p>
+a label on <code>if</code> defined elsewhere
+</p>
+</li>
+<li>
+<p>
+a undefined label on <code>else</code> or <code>elseif</code>
+</p>
+</li>
+<li>
+<p>
+a label on <code>else</code>, <code>elseif</code> or <code>endif</code> not pointing to a matching <code>if</code>
+</p>
+</li>
+<li>
+<p>
+a label on <code>break</code> or <code>continue</code> which does not point to a matching <code>while</code> or <code>do</code>
+</p>
+</li>
+<li>
+<p>
+a label on <code>endrepeat</code> or <code>endwhile</code> no referring to a corresponding <code>while</code> or <code>repeat</code>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>To make these errors non-fatal  warnings on stderr, set bit 0x20 in
+the <code>[RS274NGC]FEATURE=</code> mask ini option.</p></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr/></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2022-10-31 11:45:05 MDT
+</div>
+</div>
+
+
+</body></html>

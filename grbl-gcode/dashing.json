@@ -1,0 +1,15 @@
+{
+    "name": "GRBL GCODE",
+    "package": "grbl-gcode",
+    "index": "index.html",
+    "selectors": {
+        "div#content div.sect1 h2": "Command",
+        "title": "Package"
+    },
+    "ignore": [
+        "ABOUT"
+    ],
+    "icon32x32": "grbllogo.png",
+    "allowJS": false,
+    "ExternalURL": "https://linuxcnc.org/docs/devel/html/index.html"
+}
